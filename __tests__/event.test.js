@@ -6,7 +6,7 @@ expect.extend(matchers);
 
 describe('API Tests - Events', () => {
     it('should return all the events', async () => {
-        const response = await request(app).get('/events');
+        const response = await request(app).get('/event');
         expect(response.status).toBe(200);
         expect(response.body).toBeInstanceOf(Array);
         expect(response.body).toEqual(
