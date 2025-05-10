@@ -1,7 +1,7 @@
 const operations = [
-    { id: 1, name: 'Deposit' },
-    { id: 2, name: 'Transfer' },
-    { id: 3, name: 'Withdraw' },
+    { id: 1, name: 'deposit' },
+    { id: 2, name: 'transfer' },
+    { id: 3, name: 'withdraw' },
 ];
 
 export default operations;

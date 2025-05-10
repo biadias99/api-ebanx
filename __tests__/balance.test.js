@@ -11,7 +11,7 @@ describe('API Tests - Balances', () => {
         expect(typeof response.body).toBe('number');
     });
 
-    it('should 404 if the account id was not found', async () => {
+    it('should return 404 if the account id was not found', async () => {
         const response = await request(app).get('/balance/99999');
         expect(response.status).toBe(404);
         expect(response.body).toBe(0);

@@ -15,11 +15,60 @@ describe('API Tests - Events', () => {
                     id: expect.any(Number),
                     operation_id: expect.any(Number),
                     date_created: expect.any(String),
-                    from_account_id: expect.toBeOneOf([expect.any(Number), null]),
-                    to_account_id: expect.toBeOneOf([expect.any(Number), null]),
+                    origin: expect.toBeOneOf([expect.any(Number), null]),
+                    destination: expect.toBeOneOf([expect.any(Number), null]),
                     amount: expect.any(Number)
                 }),
             ])
         );
     });
+
+    it('should make a deposit', async () => {
+        const newEvent = {
+            "type": "deposit",
+            "destination": 1,
+            "amount": 10
+        };
+      
+        const response = await request(app)
+            .post('/event')
+            .send(newEvent)
+            .expect(201)
+            .expect('Content-Type', /json/);
+      
+        expect(response.status).toBe(201);
+    }); 
+
+    it('should make a withdraw', async () => {
+        const newEvent = {
+            "type": "withdraw",
+            "destination": 1,
+            "amount": 10
+        };
+      
+        const response = await request(app)
+            .post('/event')
+            .send(newEvent)
+            .expect(201)
+            .expect('Content-Type', /json/);
+      
+        expect(response.status).toBe(201);
+    }); 
+
+    it('should make a transfer', async () => {
+        const newEvent = {
+            "type": "withdraw",
+            "origin": 1,
+            "destination": 2,
+            "amount": 10
+        };
+      
+        const response = await request(app)
+            .post('/event')
+            .send(newEvent)
+            .expect(201)
+            .expect('Content-Type', /json/);
+      
+        expect(response.status).toBe(201);
+    }); 
 });

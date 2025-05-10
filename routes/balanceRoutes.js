@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import { getBalanceByAccountId } from '../controllers/balanceController.js';
+import { getBalanceById } from '../controllers/balanceController.js';
 
 const router = Router();
 
-router.get('/:id', getBalanceByAccountId);
+router.get('/:id', getBalanceById);
 
 export default router;
