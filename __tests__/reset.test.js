@@ -6,8 +6,6 @@ describe('API Tests - Reset', () => {
         const response = await request(app)
             .post('/reset')
             .expect(200)
-      
-        expect(response.status).toBe(200);
     }); 
 
 });

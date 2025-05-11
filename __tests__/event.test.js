@@ -30,13 +30,11 @@ describe('API Tests - Events', () => {
             "amount": 10
         };
       
-        const response = await request(app)
+        await request(app)
             .post('/event')
             .send(newEvent)
             .expect(201)
             .expect('Content-Type', /json/);
-      
-        expect(response.status).toBe(201);
     }); 
 
     it('should make a withdraw', async () => {
@@ -46,13 +44,11 @@ describe('API Tests - Events', () => {
             "amount": 10
         };
       
-        const response = await request(app)
+        await request(app)
             .post('/event')
             .send(newEvent)
             .expect(201)
             .expect('Content-Type', /json/);
-      
-        expect(response.status).toBe(201);
     }); 
 
     it('should make a transfer', async () => {
@@ -63,12 +59,10 @@ describe('API Tests - Events', () => {
             "amount": 10
         };
       
-        const response = await request(app)
+        await request(app)
             .post('/event')
             .send(newEvent)
             .expect(201)
             .expect('Content-Type', /json/);
-      
-        expect(response.status).toBe(201);
     }); 
 });
