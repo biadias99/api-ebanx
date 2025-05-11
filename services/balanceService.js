@@ -1,7 +1,7 @@
 import balances from '../mocks/balances.js';
 
 export const getBalanceById = (id) => {
-    return balances.find((balance) => balance.id === id);
+    return balances.find((balance) => +balance.id === +id);
 };
 
 export const createBalance = (destination, amount) => {

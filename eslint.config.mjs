@@ -12,7 +12,8 @@ export default defineConfig([
       'quotes': ['error', 'single'],
       'globals': {
         '_': 'readonly'
-      }
+      },
+      'indent': ['error', 2],
     },
   }
 ]);

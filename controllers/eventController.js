@@ -6,7 +6,7 @@ const hashOperation = {
     'withdraw': eventService.withdraw.bind(eventService),
 }
 
-export const getEvents = async (req, res) => {
+export const getEvents = async (req, res, next) => {
     try {
         const events = await eventService.getEvents();
         res.json(events);
@@ -15,10 +15,10 @@ export const getEvents = async (req, res) => {
     }
 };
 
-export const defineOperation = async (req, res) => {
+export const defineOperation = async (req, res, next) => {
     try {
-        const { type, amount, origin, destination } = req.body;
-
+        let { type, amount, origin, destination } = req.body;
+        
         const event = await hashOperation[type]({ type, amount, origin, destination });
 
         if (event === 0) {

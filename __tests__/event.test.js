@@ -29,7 +29,7 @@ describe('API Tests - Events', () => {
             "destination": 1,
             "amount": 10
         };
-      
+
         await request(app)
             .post('/event')
             .send(newEvent)
@@ -40,10 +40,10 @@ describe('API Tests - Events', () => {
     it('should make a withdraw', async () => {
         const newEvent = {
             "type": "withdraw",
-            "destination": 1,
+            "origin": 1,
             "amount": 10
         };
-      
+
         await request(app)
             .post('/event')
             .send(newEvent)
@@ -58,7 +58,7 @@ describe('API Tests - Events', () => {
             "destination": 2,
             "amount": 10
         };
-      
+
         await request(app)
             .post('/event')
             .send(newEvent)

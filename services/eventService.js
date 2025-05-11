@@ -33,12 +33,12 @@ export const deposit = ({ type, destination, amount }) => {
     }
 };
 
-export const withdraw = ({ type, destination, amount }) => {
-    let balance = getBalanceById(destination);
+export const withdraw = ({ type, origin, amount }) => {
+    let balance = getBalanceById(origin);
 
     if (!balance) return 0;
 
-    balance = updateBalance(destination, -amount);
+    balance = updateBalance(origin, -amount);
 
     createEvent(type, balance.id, null, amount);
 
@@ -54,10 +54,14 @@ export const transfer = ({ type, origin, destination, amount }) => {
     let originBalance = getBalanceById(origin);
     let destinationBalance = getBalanceById(destination);
 
-    if (!originBalance || !destinationBalance) return 0;
+    if (!originBalance)
+        return 0;
+    else   
+        originBalance = updateBalance(origin, -amount);
 
-    originBalance = updateBalance(origin, -amount);
-    destinationBalance = updateBalance(destination, amount);
+    destinationBalance = destinationBalance
+        ? updateBalance(destination, amount)
+        : createBalance(destination, amount);
 
     createEvent(type, originBalance.id, destinationBalance.id, amount);
 
@@ -74,5 +78,5 @@ export const transfer = ({ type, origin, destination, amount }) => {
 };
 
 export const resetEvents = () => {
-   events.length = 0;
+    events.length = 0;
 }

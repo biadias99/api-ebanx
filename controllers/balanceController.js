@@ -1,8 +1,9 @@
 import * as balanceService from '../services/balanceService.js';
 
-export const getBalanceById = async (req, res) => {
+export const getBalanceById = async (req, res, next) => {
     try {
-        const balance = await balanceService.getBalanceById(+req.params.id);
+        const accountId = req.query.account_id;
+        const balance = await balanceService.getBalanceById(+accountId);
         
         if (!balance) {
             return res.status(404).json(0);
