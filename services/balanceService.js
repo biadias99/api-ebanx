@@ -19,3 +19,7 @@ export const updateBalance = (destination, amount) => {
     balance.amount += amount;
     return balance;
 };
+
+export const resetBalances = () => {
+    balances.length = 0;
+}

@@ -1,8 +1,5 @@
-import * as matchers from 'jest-extended';
 import request from 'supertest';
 import app from '../app.js';
-
-expect.extend(matchers);
 
 describe('API Tests - Balances', () => {
     it('should return a balance by account id', async () => {

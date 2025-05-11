@@ -73,3 +73,6 @@ export const transfer = ({ type, origin, destination, amount }) => {
     }
 };
 
+export const resetEvents = () => {
+   events.length = 0;
+}

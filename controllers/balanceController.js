@@ -10,7 +10,7 @@ export const getBalanceById = async (req, res) => {
 
         res.status(200).json(balance.amount);
     } catch (error) {
-        return res.status(500).json({ error: 'Internal Server Error', message: error.message });
+        next(error);
     }
 };
 
